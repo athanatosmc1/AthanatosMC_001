@@ -1,1 +1,19 @@
 
+
+name: Temporary Windows Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Check Windows
+        shell: pwsh
+        run: |
+          Write-Host "Windows cloud runner is online!"
+          Get-ComputerInfo |
+            Select-Object WindowsProductName,
+              WindowsVersion
+          Get-Date
